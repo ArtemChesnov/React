@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "./Button";
 import { Input } from "./Input";
+import shortid from "shortid";
 
 export class Form extends Component {
   state = {
@@ -10,7 +11,7 @@ export class Form extends Component {
   };
 
   handleClick = () => {
-    if (this.state.value === "") {
+    if (!this.state.value) {
       alert("Вы должны что то написать!");
       return false;
     } else {
@@ -21,7 +22,6 @@ export class Form extends Component {
 
   handleChange = (event) => {
     this.setState({ value: event.target.value });
-    console.log(event);
   };
 
   closeItem = (event) => {
@@ -46,7 +46,11 @@ export class Form extends Component {
           <div className="toDo-basket">
             <ul className="toDo-list">
               {this.state.toDolist.map((toDolist) => (
-                <li onClick={this.checkedItem} className="toDo-item">
+                <li
+                  key={shortid.generate()}
+                  onClick={this.checkedItem}
+                  className="toDo-item"
+                >
                   {toDolist}
                   <span className="close" onClick={this.closeItem}>
                     &#215;

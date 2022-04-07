@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "./Button";
 import { Input } from "./Input";
+import shortid from "shortid";
 
 export const Form = () => {
   const [name, setName] = useState("click");
@@ -8,7 +9,7 @@ export const Form = () => {
   const [toDolist, setToDoList] = useState([]);
 
   const handleClick = () => {
-    if (value === "") {
+    if (!value) {
       alert("Вы должны что то написать!");
       return false;
     } else {
@@ -42,7 +43,11 @@ export const Form = () => {
         <div className="toDo-basket">
           <ul className="toDo-list">
             {toDolist.map((toDolist) => (
-              <li onClick={checkedItem} className="toDo-item">
+              <li
+                key={shortid.generate()}
+                onClick={checkedItem}
+                className="toDo-item"
+              >
                 {toDolist}
                 <span className="close" onClick={closeItem}>
                   &#215;

@@ -6,24 +6,6 @@ import {ScrollBtn} from "./Components/CompFunc/ScrollBtn";
 
 const myName = "Артём Чеснов";
 
-// export class App extends Component {
-//   render() {
-//     return (
-//       <>
-//         <div className="App">
-//           <header className="App-header">
-//             <Message name={myName} />
-//             <ScrollBtn />
-//           </header>
-//           <main className="App-main">
-//             <Form />
-//           </main>
-//         </div>
-//       </>
-//     );
-//   }
-// }
-
 export const App = () => {
   return (
     <>

@@ -1,22 +1,27 @@
-import React, { Component } from "react";
-import { Button } from "./Button";
-import { Input } from "./Input";
-import shortid from "shortid";
+import React, { Component } from 'react';
+import { Button } from './Button';
+import { Input } from './Input';
+import shortid from 'shortid';
 
 export class Form extends Component {
-  state = {
-    value: "",
-    name: "click",
-    toDolist: [],
-  };
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+
+    this.state = {
+      value: '',
+      name: 'click',
+      toDolist: [],
+    };
+  }
 
   handleClick = () => {
     if (!this.state.value) {
-      alert("Вы должны что то написать!");
+      alert('Вы должны что то написать!');
       return false;
     } else {
       this.setState({ toDolist: [...this.state.toDolist, this.state.value] });
-      this.setState({ value: "" });
+      this.setState({ value: '' });
     }
   };
 
@@ -25,12 +30,24 @@ export class Form extends Component {
   };
 
   closeItem = (event) => {
-    event.target.parentElement.style.display = "none";
+    event.target.parentElement.style.display = 'none';
   };
 
   checkedItem = (event) => {
-    event.target.classList.toggle("checked");
+    event.target.classList.toggle('checked');
   };
+
+  componentDidMount() {
+    console.log('form did mount');
+    this.myRef.current.focus();
+  }
+
+  shouldComponentUpdate(nextState) {
+    if (nextState.name !== this.state.name) {
+      return true;
+    }
+    return false;
+  }
 
   render() {
     return (
@@ -58,6 +75,7 @@ export class Form extends Component {
                 </li>
               ))}
             </ul>
+            <input type="text" ref={this.myRef} />
           </div>
         </div>
       </>

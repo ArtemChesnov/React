@@ -5,6 +5,7 @@ exports[`MessageButton render with snapshot 1`] = `
   <button
     class="message-button"
     id="button"
+    type="submit"
   >
     Отправить
   </button>

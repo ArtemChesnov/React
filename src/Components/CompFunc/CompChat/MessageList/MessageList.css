@@ -1,0 +1,13 @@
+.messageList {
+    background: rgb(0, 32, 36);
+    background: -moz-linear-gradient(90deg, rgba(0, 32, 36, 1) 0%, rgba(0, 255, 235, 0.9444152661064426) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(0, 32, 36, 1) 0%, rgba(0, 255, 235, 0.9444152661064426) 100%);
+    background: linear-gradient(90deg, rgba(0, 32, 36, 1) 0%, rgba(0, 255, 235, 0.9444152661064426) 100%);
+    min-height: 100vh;
+    display: flex;
+    font-size: calc(10px + 2vmin);
+    color: rgb(37, 37, 37);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

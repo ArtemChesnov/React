@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageForm Render with snapshot 1`] = `
+<DocumentFragment>
+  <form
+    data-testid="form"
+  >
+    <div
+      class="mesageFromUser-form"
+    >
+      <div
+        class="message-form"
+      >
+        <input
+          class="autor-input"
+          placeholder="Введите ваше имя..."
+          required=""
+          type="text"
+          value=""
+        />
+        <textarea
+          class="message-input"
+          placeholder="Напишите сообщение..."
+          required=""
+          type="text"
+        />
+        <button
+          class="message-button"
+          disabled=""
+          id="button"
+          type="submit"
+        >
+          Отправить
+        </button>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`MessageForm Send a empty message 1`] = `
+<DocumentFragment>
+  <form
+    data-testid="form"
+  >
+    <div
+      class="mesageFromUser-form"
+    >
+      <div
+        class="message-form"
+      >
+        <input
+          class="autor-input"
+          placeholder="Введите ваше имя..."
+          required=""
+          type="text"
+          value=""
+        />
+        <textarea
+          class="message-input"
+          placeholder="Напишите сообщение..."
+          required=""
+          type="text"
+        />
+        <button
+          class="message-button"
+          disabled=""
+          id="button"
+          type="submit"
+        >
+          Отправить
+        </button>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

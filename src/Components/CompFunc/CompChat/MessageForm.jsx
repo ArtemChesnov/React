@@ -1,44 +1,19 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { AutorInput } from './AutorInput';
-import { MessageButton } from './MessageButton';
-import { MessageInput } from './MessageInput';
-import { MessageList } from './MessageList';
+import React, { useState } from 'react';
+import { AutorInput } from './AutorInput/AutorInput';
+import { MessageButton } from './MessageButton/MessageButton';
+import { MessageInput } from './MessageInput/MessageInput';
+import './MessageForm.css';
 
-export const MessageForm = () => {
+export const MessageForm = ({ addMessage }) => {
   const [autorValue, setAutorValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
-  const [message, setMessage] = useState([]);
 
-  const clickSubmit = useCallback(() => {
-    setMessage([
-      ...message,
-      {
-        autor: autorValue,
-        value: messageValue,
-        now: new Date().toLocaleTimeString().slice(0, -3),
-      },
-    ]);
+  const handleSubmitForm = (event) => {
+    event.preventDefault();
+    addMessage(autorValue, messageValue);
     setAutorValue('');
     setMessageValue('');
-  }, [message, autorValue, messageValue]);
-
-  useEffect(() => {
-    if (message.length > 0 && message[message.length - 1].autor !== 'Душнила') {
-      const timeout = setTimeout(() => {
-        setMessage([
-          ...message,
-          {
-            autor: 'Душнила',
-            value: `Привет ${message[message.length - 1].autor}, ты скучный.`,
-            now: new Date().toLocaleTimeString().slice(0, -3),
-          },
-        ]);
-      }, 2000);
-      return () => {
-        clearTimeout(timeout);
-      };
-    }
-  }, [message]);
+  };
 
   const autorChange = (event) => {
     setAutorValue(event.target.value);
@@ -49,9 +24,8 @@ export const MessageForm = () => {
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmitForm} data-testid="form">
       <div className="mesageFromUser-form">
-        <MessageList message={message} />
         <div className="message-form">
           <AutorInput autorValue={autorValue} changeName={autorChange} />
           <MessageInput
@@ -60,7 +34,9 @@ export const MessageForm = () => {
           />
           <MessageButton
             disabled={!messageValue || !autorValue}
-            click={clickSubmit}
+            click={() => {
+              console.log('xer');
+            }}
           />
         </div>
       </div>

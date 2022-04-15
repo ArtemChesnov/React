@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { Button } from './Button';
 import { Input } from './Input';
-import '../../App.css';
 import shortid from 'shortid';
 
 export const Form = () => {

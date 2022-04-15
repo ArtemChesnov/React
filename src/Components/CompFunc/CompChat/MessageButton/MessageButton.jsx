@@ -1,12 +1,14 @@
 import React from 'react';
+import './MessageButton.css';
 
-export const MessageButton = (props) => {
+export const MessageButton = ({ disabled, click }) => {
   return (
     <button
-      onClick={props.click}
-      disabled={props.disabled}
+      onClick={click}
+      disabled={disabled}
       className="message-button"
       id="button"
+      type="submit"
     >
       Отправить
     </button>

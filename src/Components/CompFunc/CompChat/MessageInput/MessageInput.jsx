@@ -1,4 +1,5 @@
 import React from 'react';
+import './MessageInput.css';
 
 export const MessageInput = (props) => {
   return (

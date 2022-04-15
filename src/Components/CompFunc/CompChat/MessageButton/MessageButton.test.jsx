@@ -1,9 +1,9 @@
 import React from 'react';
-import { MessageButton } from './MessageButton';
+import { MessageButton } from '../MessageButton/MessageButton';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-// import { userEvent } from '@testing-library/user-event';
-// import { waitFor } from '@storybook/testing-library';
+const { default: userEvent } = require('@testing-library/user-event');
+import { waitFor } from '@storybook/testing-library';
 
 describe('MessageButton', () => {
   it('render component', () => {
@@ -41,25 +41,22 @@ describe('MessageButton', () => {
     expect(screen.getByText('Отправить')).toHaveClass('message-button');
   });
 
-  // it('button click with userEvent', async () => {
-  //   const mockHandler = jest.fn();
+  it('button click with userEvent', async () => {
+    const mockHandler = jest.fn();
 
-  //   render(<MessageButton onButtonClick={mockHandler} />);
-  //   userEvent.click(screen.getByText(/Добавить/));
-  //   expect(mockHandler).toBeCalledTimes(1);
-  //   await waitFor(() => expect(mockHandler).toBeCalledTimes(1));
-  // });
+    render(<MessageButton click={mockHandler} />);
+    await userEvent.click(screen.getByText(/Отправить/));
+    expect(mockHandler).toBeCalledTimes(1);
+  });
 
-  // it('button async click', async () => {
-  //   const mockHandler = jest.fn();
-  //   render(
-  //     <MessageButton onButtonClick={() => setTimeout(mockHandler, 1000)} />,
-  //   );
+  it('button async click', async () => {
+    const mockHandler = jest.fn();
+    render(<MessageButton click={() => setTimeout(mockHandler, 1000)} />);
 
-  //   userEvent.click(screen.getByText(/Отправить/));
+    await userEvent.click(screen.getByText(/Отправить/));
 
-  //   await waitFor(() => expect(mockHandler).toHaveBeenCalledTimes(1), {
-  //     timeout: 1100,
-  //   });
-  // });
+    await waitFor(() => expect(mockHandler).toHaveBeenCalledTimes(1), {
+      timeout: 1100,
+    });
+  });
 });

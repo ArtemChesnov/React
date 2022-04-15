@@ -1,4 +1,5 @@
 import React from 'react';
+import './AutorInput.css';
 
 export const AutorInput = (props, { func }) => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const AutorInput = (props) => {
+export const AutorInput = (props, { func }) => {
   return (
     <input
       value={props.autorValue}
@@ -9,6 +9,7 @@ export const AutorInput = (props) => {
       className="autor-input"
       required
       placeholder="Введите ваше имя..."
+      click={func}
     />
   );
 };

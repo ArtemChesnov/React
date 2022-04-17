@@ -15,7 +15,7 @@
     "build-storybook": "build-storybook",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --colors",
+    "test:coverage": "jest --coverage --colors"
   },
   "dependencies": {
     "@zarconontol/enzyme-adapter-react-18": "^0.7.3",

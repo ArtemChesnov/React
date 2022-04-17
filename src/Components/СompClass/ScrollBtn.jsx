@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export class ScrollBtn extends Component {
   scroll = () => {
-    document.querySelector("main").scrollIntoView({
-      behavior: "smooth",
+    document.querySelector('main').scrollIntoView({
+      behavior: 'smooth',
     });
   };
 

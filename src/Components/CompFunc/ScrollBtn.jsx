@@ -1,7 +1,9 @@
+import React from 'react';
+
 export const ScrollBtn = () => {
   const scroll = () => {
-    document.querySelector("main").scrollIntoView({
-      behavior: "smooth",
+    document.querySelector('main').scrollIntoView({
+      behavior: 'smooth',
     });
   };
 

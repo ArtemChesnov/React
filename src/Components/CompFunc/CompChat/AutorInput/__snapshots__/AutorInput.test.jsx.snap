@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutorInput render with snapshot 1`] = `
+<DocumentFragment>
+  <input
+    class="autor-input"
+    placeholder="Введите ваше имя..."
+    required=""
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;

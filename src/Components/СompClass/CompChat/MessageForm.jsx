@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { AutorInput } from './AutorInput';
 import { MessageButton } from './MessageButton';
 import { MessageInput } from './MessageInput';
-import shortid from 'shortid';
 
 export class MessageForm extends Component {
   constructor(props) {
@@ -11,29 +10,23 @@ export class MessageForm extends Component {
     this.state = {
       autorValue: '',
       messageValue: '',
-      name: 'click',
       message: [],
     };
   }
 
   clickSubmit = () => {
-    if (!this.state.message || !this.state.autorValue) {
-      alert('Вы должны заполнить все поля!');
-      return false;
-    } else {
-      this.setState({
-        message: [
-          ...this.state.message,
-          {
-            autor: this.state.autorValue,
-            message: this.state.messageValue,
-            now: new Date().toLocaleTimeString().slice(0, -3),
-          },
-        ],
-      });
-      this.setState({ messageValue: '' });
-      this.setState({ autorValue: '' });
-    }
+    this.setState({
+      message: [
+        ...this.state.message,
+        {
+          autor: this.state.autorValue,
+          message: this.state.messageValue,
+          now: new Date().toLocaleTimeString().slice(0, -3),
+        },
+      ],
+    });
+    this.setState({ messageValue: '' });
+    this.setState({ autorValue: '' });
   };
 
   bot = () => {
@@ -58,7 +51,6 @@ export class MessageForm extends Component {
     ) {
       this.interval = setTimeout(this.bot, 1500);
     }
-    return true;
   }
 
   componentWillUnmount() {
@@ -80,8 +72,8 @@ export class MessageForm extends Component {
           <h1 className="message-title">Чат с Душнилой</h1>
           <div className="message-chat">
             <ul className="message-list">
-              {this.state.message.map((message) => (
-                <li key={shortid.generate()} className="message-item">
+              {this.state.message.map((message, idx) => (
+                <li key={idx} className="message-item">
                   <h1 className="message-autor">{message.autor}</h1>
                   <p className="message-text">
                     {message.message}
@@ -101,7 +93,10 @@ export class MessageForm extends Component {
             changeMessage={this.messageChange}
             messageValue={this.state.messageValue}
           />
-          <MessageButton click={this.clickSubmit} />
+          <MessageButton
+            disabled={!this.state.messageValue || !this.state.autorValue}
+            click={this.clickSubmit}
+          />
         </div>
       </div>
     );

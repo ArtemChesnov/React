@@ -13,9 +13,9 @@
     "deploy:coverage": "npm run test:coverage && gh-pages -d coverage/lcov-report",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest && npm run loki:test",
+    "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --colors"
+    "test:coverage": "jest --coverage --colors",
   },
   "dependencies": {
     "@zarconontol/enzyme-adapter-react-18": "^0.7.3",

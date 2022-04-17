@@ -4,18 +4,19 @@
   "private": true,
   "homepage": "https://artemchesnov.github.io/React/",
   "scripts": {
-    "start": "webpack serve --mode=development --open",
+    "start": "webpack serve --mode=development",
     "build": "webpack --mode=production",
-    "report": "npm run build --withReport true",
     "lint": "npx eslint ./src --ext .js,.jsx --fix",
-    "deploy:web": "npm run build && gh-pages -d build",
-    "deploy:storybook": "npm run build-storybook && gh-pages -d storybook-static",
-    "deploy:coverage": "npm run test:coverage && gh-pages -d coverage/lcov-report",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --colors"
+    "test:coverage": "jest --coverage --colors",
+    "loki:update": "npm run build-storybook && loki update --requireReference --reactUri file:./storybook-static",
+    "loki:approve": "loki approve",
+    "loki:test": "npm run build-storybook && loki test --requireReference --reactUri file:./storybook-static"
   },
   "dependencies": {
     "@zarconontol/enzyme-adapter-react-18": "^0.7.3",
@@ -77,13 +78,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run test"
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm test"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,html,css,scss,sass}": [
-      "npm run lint"
-    ]
   },
   "loki": {
     "configurations": {

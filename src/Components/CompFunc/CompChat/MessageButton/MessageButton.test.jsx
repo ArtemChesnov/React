@@ -27,7 +27,6 @@ describe('MessageButton', () => {
         <MessageButton />
       </>
     );
-
     expect(screen.queryAllByRole('button').length).toBe(2);
   });
 

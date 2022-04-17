@@ -9,12 +9,22 @@ describe('MessageForm', () => {
     render(<MessageForm />);
   });
 
-  it('Render with snapshot', () => {
+  it('render with snapshot', () => {
     const { asFragment } = render(<MessageForm />);
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Input test', () => {
+  it('render multiply components', () => {
+    render(
+      <>
+        <MessageForm />
+        <MessageForm />
+      </>
+    );
+    expect(screen.queryAllByTestId('form').length).toBe(2);
+  });
+
+  it('have a input', () => {
     render(<MessageForm />);
     fireEvent.input(screen.getByPlaceholderText('Введите ваше имя...'), {
       target: { value: 'Test' },
@@ -24,7 +34,7 @@ describe('MessageForm', () => {
     );
   });
 
-  it('Textarea test', () => {
+  it('have a textarea', () => {
     render(<MessageForm />);
     fireEvent.input(screen.getByPlaceholderText('Напишите сообщение...'), {
       target: { value: 'Test' },
@@ -34,61 +44,27 @@ describe('MessageForm', () => {
     );
   });
 
-  it('button test', () => {
+  it('have a button', () => {
     render(<MessageForm />);
     expect(screen.getByText('Отправить')).toHaveClass('message-button');
   });
 
-  it('Send a message', () => {
+  it('send a message', () => {
     render(<MessageForm />);
     fireEvent.input(screen.getByPlaceholderText('Напишите сообщение...'), {
-      target: { value: 'Test' },
+      target: { value: 'Message' },
     });
     fireEvent.click(screen.getByRole('button'));
-    expect(screen.getByText(/Test/)).toBeInTheDocument();
+    expect(screen.getByText(/Message/)).toBeInTheDocument();
   });
 
-  it('Send a empty message', () => {
-    const { asFragment } = render(<MessageForm />);
-    fireEvent.input(screen.getByPlaceholderText('Введите ваше имя...'), {
-      target: { value: '' },
-    });
-    fireEvent.input(screen.getByPlaceholderText('Напишите сообщение...'), {
-      target: { value: '' },
-    });
-    fireEvent.click(screen.getByRole('button'));
-    expect(asFragment()).toMatchSnapshot();
+  it('form submit test', () => {
+    const mockHandler = jest.fn();
+
+    render(<MessageForm addMessage={mockHandler} />);
+
+    fireEvent.submit(screen.getByTestId('form'));
+
+    expect(mockHandler).toBeCalledTimes(1);
   });
-
-  // it('Bot answer', async () => {
-  //   render(<MessageForm />);
-  //   fireEvent.input(screen.getByPlaceholderText('Введите ваше имя...'), {
-  //     target: { value: 'Autor' },
-  //   });
-  //   fireEvent.input(screen.getByPlaceholderText('Напишите сообщение...'), {
-  //     target: { value: 'Hi' },
-  //   });
-  //   fireEvent.click(screen.getByRole('button'));
-  //   expect(
-  //     await screen.findByText(/Привет Autor, ты скучный/),
-  //   ).toBeInTheDocument();
-  // });
-
-  // it('onSubmit to have been called', async () => {
-  //   const mock = jest.fn();
-  //   render(<MessageForm onSubmit={mock} />);
-  //   // Arrange
-  //   fireEvent.input(screen.getByPlaceholderText('Напишите сообщение...'), {
-  //     target: { value: 'Test' },
-  //   });
-
-  //   fireEvent.input(screen.getByPlaceholderText('Напишите сообщение...'), {
-  //     target: { value: '' },
-  //   });
-  //   fireEvent.click(screen.getByRole('button'));
-  //   // Act
-  //   fireEvent.submit(screen.getByTestId('form'));
-  //   // Assert
-  //   expect(mock).toHaveBeenCalled();
-  // });
 });

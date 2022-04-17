@@ -15,29 +15,16 @@ export const MessageForm = ({ addMessage }) => {
     setMessageValue('');
   };
 
-  const autorChange = (event) => {
-    setAutorValue(event.target.value);
-  };
-
-  const messageChange = (event) => {
-    setMessageValue(event.target.value);
-  };
-
   return (
     <form onSubmit={handleSubmitForm} data-testid="form">
       <div className="mesageFromUser-form">
         <div className="message-form">
-          <AutorInput autorValue={autorValue} changeName={autorChange} />
+          <AutorInput autorValue={autorValue} setAutorValue={setAutorValue} />
           <MessageInput
-            changeMessage={messageChange}
+            setMessageValue={setMessageValue}
             messageValue={messageValue}
           />
-          <MessageButton
-            disabled={!messageValue || !autorValue}
-            click={() => {
-              console.log('xer');
-            }}
-          />
+          <MessageButton disabled={!messageValue || !autorValue} />
         </div>
       </div>
     </form>

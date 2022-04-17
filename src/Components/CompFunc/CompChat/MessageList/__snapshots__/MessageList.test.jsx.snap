@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MessageList Render with snapshot 1`] = `
+exports[`MessageList render with snapshot 1`] = `
 <DocumentFragment>
   <div
     class="message-board"
@@ -25,11 +25,11 @@ exports[`MessageList Render with snapshot 1`] = `
           <p
             class="message-text"
           >
-            Render
+            Message
             <span
               class="message-time"
             >
-              1
+              11-00
             </span>
           </p>
         </li>

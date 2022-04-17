@@ -53,8 +53,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: rgb(37, 37, 37);
 }
-
+/* 
 .toDoList {
   height: 100vh;
   flex-direction: row-reverse;
@@ -227,9 +229,9 @@
 .parent {
   display: flex;
   flex-direction: column;
-}
+} */
 
-.scroll-btn-toDO {
+/* .scroll-btn-toDO {
   border: none;
   outline: none;
   background-color: transparent;
@@ -252,4 +254,10 @@
   color: #282c34;
   outline-color: #282c34;
   outline-offset: 300px;
+} */
+
+.messageList {
+  background: linear-gradient(90deg, rgba(0, 32, 36, 1) 0%, rgba(0, 255, 235, 0.9444152661064426) 100%);
+  min-height: 100vh;
+  display: flex;
 }

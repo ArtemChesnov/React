@@ -7,22 +7,26 @@ describe('MessageList', () => {
   it('Render component', () => {
     render(
       <MessageList
-        message={[{ value: 'Render', author: 'Render', now: '1' }]}
+        message={[{ author: 'Autor', value: 'Message', now: '11-00' }]}
       />
     );
   });
 
-  it('Render with snapshot', () => {
+  it('render with snapshot', () => {
     const { asFragment } = render(
       <MessageList
-        message={[{ value: 'Render', author: 'Render', now: '1' }]}
+        message={[{ author: 'Autor', value: 'Message', now: '11-00' }]}
       />
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Render with text', () => {
-    render(<MessageList message={[{ value: 'Render', autor: 'Render' }]} />);
+  it('render with text', () => {
+    render(
+      <MessageList
+        message={[{ autor: 'Render', value: 'Render', now: '11-00' }]}
+      />
+    );
     expect(screen.getAllByText(/Render/));
   });
 });

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { AutorInput } from './AutorInput';
 import { MessageButton } from './MessageButton';
 import { MessageInput } from './MessageInput';
-import shortid from 'shortid';
 
 export class MessageForm extends Component {
   constructor(props) {
@@ -73,8 +72,8 @@ export class MessageForm extends Component {
           <h1 className="message-title">Чат с Душнилой</h1>
           <div className="message-chat">
             <ul className="message-list">
-              {this.state.message.map((message) => (
-                <li key={shortid.generate()} className="message-item">
+              {this.state.message.map((message, idx) => (
+                <li key={idx} className="message-item">
                   <h1 className="message-autor">{message.autor}</h1>
                   <p className="message-text">
                     {message.message}

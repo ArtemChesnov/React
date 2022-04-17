@@ -1,5 +1,4 @@
 import React from 'react';
-import shortid from 'shortid';
 import './MessageList.css';
 
 export const MessageList = ({ message }) => {
@@ -8,8 +7,8 @@ export const MessageList = ({ message }) => {
       <h1 className="message-title">Чат с Душнилой</h1>
       <div className="message-chat">
         <ul className="message-list">
-          {message.map((message) => (
-            <li key={shortid.generate()} className="message-item">
+          {message.map((message, idx) => (
+            <li key={idx} className="message-item">
               <h1 className="message-autor">{message.autor}</h1>
               <p className="message-text">
                 {message.value}

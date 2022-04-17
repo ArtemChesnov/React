@@ -2,12 +2,16 @@ import React from 'react';
 import { MessageInput } from './MessageInput';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-const { default: userEvent } = require('@testing-library/user-event');
-import { waitFor } from '@storybook/testing-library';
 
 describe('MessageInput', () => {
   it('render component', () => {
     render(<MessageInput />);
+  });
+  it('textarea to be in document', () => {
+    render(<MessageInput />);
+    expect(
+      screen.getByPlaceholderText('Напишите сообщение...')
+    ).toBeInTheDocument();
   });
 
   it('render with snapshot', () => {
@@ -15,7 +19,7 @@ describe('MessageInput', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('Multiple render', () => {
+  it('multiple render', () => {
     render(
       <>
         <MessageInput />
@@ -25,20 +29,24 @@ describe('MessageInput', () => {
     expect(screen.getAllByRole('textbox').length).toBe(2);
   });
 
-  it('Render with value and change handler', () => {
-    render(<MessageInput />);
-    fireEvent.input(screen.getByRole('textbox'), {
+  it('render with value', () => {
+    const mock = jest.fn();
+    render(<MessageInput setMessageValue={mock} />);
+
+    fireEvent.input(screen.getByPlaceholderText('Напишите сообщение...'), {
       target: { value: 'message' },
     });
     expect(screen.getByDisplayValue(/message/)).toBeInTheDocument();
   });
 
-  it('button async click', () => {
-    const func = jest.fn();
-    render(<MessageInput change={jest.fn()} text={'text'} click={func} />);
+  it('textarea value change by typing', () => {
+    const mock = jest.fn();
+    render(<MessageInput setMessageValue={mock} />);
 
-    userEvent.click(screen.getByPlaceholderText('Напишите сообщение...'));
+    const textarea = screen.getByPlaceholderText('Напишите сообщение...');
 
-    waitFor(() => expect(func).toBeCalledTimes(2));
+    fireEvent.change(textarea, { target: { value: 'message' } });
+
+    expect(textarea.value).toBe('message');
   });
 });

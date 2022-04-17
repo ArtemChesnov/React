@@ -2,15 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const BundleAnalyzerPlugin =
-    require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isDev = process.env.NODE_ENV === 'development';
 const withReport = process.env.npm_config_withReport;
 
 module.exports = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-    entry: path.resolve(__dirname, './src/index.tsx'),
+    entry: path.resolve(__dirname, './src/index.jsx'),
     output: {
         filename: '[name].bundle.[chunkhash].js',
         clean: true,
@@ -26,7 +25,7 @@ module.exports = {
         'hidden-source-map' : 'eval-source-map',
     devServer: {
         compress: true,
-        port: 8000,
+        port: 8080,
         client: {
             logging: 'info',
         },

@@ -1,13 +1,18 @@
 import React from 'react';
 import { AutorInput } from '../AutorInput/AutorInput';
-import { render, screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-const { default: userEvent } = require('@testing-library/user-event');
-import { waitFor } from '@storybook/testing-library';
 
 describe('AutorInput', () => {
   it('render component', () => {
     render(<AutorInput />);
+  });
+
+  it('input to be in document', () => {
+    render(<AutorInput />);
+    expect(
+      screen.getByPlaceholderText('Введите ваше имя...')
+    ).toBeInTheDocument();
   });
 
   it('render with snapshot', () => {
@@ -15,19 +20,34 @@ describe('AutorInput', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('render component with text', () => {
-    render(<AutorInput />);
-    expect(
-      screen.getByPlaceholderText('Введите ваше имя...')
-    ).toBeInTheDocument();
+  it('multiple render', () => {
+    render(
+      <>
+        <AutorInput />
+        <AutorInput />
+      </>
+    );
+    expect(screen.getAllByRole('textbox').length).toBe(2);
   });
 
-  it('button async click', () => {
-    const func = jest.fn();
-    render(<AutorInput change={jest.fn()} text={'text'} click={func} />);
+  it('render with value', () => {
+    const mock = jest.fn();
+    render(<AutorInput setAutorValue={mock} />);
 
-    userEvent.click(screen.getByPlaceholderText('Введите ваше имя...'));
+    fireEvent.input(screen.getByPlaceholderText('Введите ваше имя...'), {
+      target: { value: 'Name' },
+    });
+    expect(screen.getByDisplayValue(/Name/)).toBeInTheDocument();
+  });
 
-    waitFor(() => expect(func).toBeCalledTimes(2));
+  it('input value change by typing', () => {
+    const mock = jest.fn();
+    render(<AutorInput setAutorValue={mock} />);
+
+    const input = screen.getByPlaceholderText('Введите ваше имя...');
+
+    fireEvent.change(input, { target: { value: 'Name' } });
+
+    expect(input.value).toBe('Name');
   });
 });

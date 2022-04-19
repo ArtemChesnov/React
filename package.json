@@ -96,7 +96,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,scss,sass}": [
-      "npm run test"
+      "npm run lint"
     ]
   },
   "loki": {

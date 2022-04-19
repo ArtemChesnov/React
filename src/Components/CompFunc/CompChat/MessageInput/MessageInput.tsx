@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './MessageInput.css';
+import './MessageInput.scss';
 
 interface MessageInputProps {
   messageValue: string;

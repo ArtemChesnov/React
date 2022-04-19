@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './AutorInput.css';
+import './AutorInput.scss';
 
 interface AutorInputProps {
   autorValue: string;

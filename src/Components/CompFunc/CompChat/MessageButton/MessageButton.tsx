@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './MessageButton.css';
+import './MessageButton.scss';
 
 interface ButtonProps {
   disabled: boolean;

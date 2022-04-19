@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './MessageList.css';
+import './MessageList.scss';
 
 interface Message {
   id: string;

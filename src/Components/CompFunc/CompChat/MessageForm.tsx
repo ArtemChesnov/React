@@ -2,7 +2,7 @@ import React, { useState, memo } from 'react';
 import { AutorInput } from './AutorInput/AutorInput';
 import { MessageButton } from './MessageButton/MessageButton';
 import { MessageInput } from './MessageInput/MessageInput';
-import './MessageForm.css';
+import './MessageForm.scss';
 
 interface FormProps {
   addMessage: (autorValue: string, messageValue: string) => void;

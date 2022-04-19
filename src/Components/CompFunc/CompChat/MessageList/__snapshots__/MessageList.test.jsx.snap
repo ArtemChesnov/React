@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageList render with snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="message-board"
+  >
+    <h1
+      class="message-title"
+    >
+      Чат с Душнилой
+    </h1>
+    <div
+      class="message-chat"
+    >
+      <ul
+        class="message-list"
+      >
+        <li
+          class="message-item"
+        >
+          <h1
+            class="message-autor"
+          />
+          <p
+            class="message-text"
+          >
+            Message
+            <span
+              class="message-time"
+            >
+              11-00
+            </span>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</DocumentFragment>
+`;

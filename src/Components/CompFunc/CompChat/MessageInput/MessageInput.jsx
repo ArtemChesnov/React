@@ -1,14 +1,17 @@
 import React from 'react';
+import './MessageInput.css';
 
-export const MessageInput = (props) => {
+export const MessageInput = ({ messageValue, setMessageValue }) => {
   return (
     <>
       <textarea
         type="text"
         className="message-input"
         required
-        onChange={props.changeMessage}
-        value={props.messageValue}
+        onChange={(event) => {
+          setMessageValue(event.target.value);
+        }}
+        value={messageValue}
         placeholder="Напишите сообщение..."
       />
     </>

@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 
 export class AutorInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      autor: '',
-    };
-  }
-
   render() {
     return (
       <>

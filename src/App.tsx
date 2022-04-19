@@ -1,10 +1,9 @@
 import React, { FC, useRef, useState, useCallback, useEffect } from 'react';
-import './App.css';
 import { Message } from './Components/CompFunc/Message';
 import { MessageForm } from './Components/CompFunc/CompChat/MessageForm';
 import { MessageList } from './Components/CompFunc/CompChat/MessageList/MessageList';
 import { nanoid } from 'nanoid';
-
+import './App.scss';
 interface Message {
   id: string;
   autor: string;

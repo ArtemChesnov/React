@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageInput render with snapshot 1`] = `
+<DocumentFragment>
+  <textarea
+    class="message-input"
+    placeholder="Напишите сообщение..."
+    required=""
+  />
+</DocumentFragment>
+`;

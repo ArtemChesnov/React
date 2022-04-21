@@ -24,7 +24,6 @@ module.exports = {
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
-
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
   //   "\\\\node_modules\\\\"
@@ -34,7 +33,12 @@ module.exports = {
   // coverageProvider: "babel",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  // coverageReporters: ['html'],
+  // coverageReporters: [
+  //   "json",
+  //   "text",
+  //   "lcov",
+  //   "clover"
+  // ],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -77,8 +81,7 @@ module.exports = {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '^.+\\.(css|less|scss)$': 'babel-jest',
-    '\\.(css)$': 'identity-obj-proxy',
+    '\\.(css|scss)$': 'identity-obj-proxy',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -167,7 +170,7 @@ module.exports = {
   // testURL: "http://localhost",
 
   // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
-  // timers: "real"
+  // timers: "real",
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, RefObject } from 'react';
 import { MessageStart } from './Components/СompClass/Message';
 import { MessageList } from './Components/СompClass/CompChat/MessageList';
 import { MessageForm } from './Components/СompClass/CompChat/MessageForm';
@@ -19,24 +19,21 @@ interface Message {
 
 interface State {
   messages: Message[];
+  toChat: RefObject<HTMLElement>;
 }
 
 export class AppClass extends Component<FormProps, State> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  toChat: any;
-  interval!: NodeJS.Timeout;
-
   constructor(props: FormProps) {
     super(props);
-    this.toChat = React.createRef();
     this.state = {
       messages: [],
+      toChat: React.createRef(),
     };
   }
 
   srollBtn = () => {
-    if (this.toChat && this.toChat.current) {
-      this.toChat.current.scrollIntoView({ behavior: 'smooth' });
+    if (this.state.toChat && this.state.toChat.current) {
+      this.state.toChat.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -75,15 +72,11 @@ export class AppClass extends Component<FormProps, State> {
       this.state.messages.length > 0 &&
       this.state.messages[this.state.messages.length - 1].autor !== 'Душнила'
     ) {
-      this.interval = setTimeout(this.bot, 1500);
+      setTimeout(this.bot, 1500);
     }
   }
 
-  componentWillUnmount() {
-    clearTimeout(this.interval);
-  }
-
-  render(): React.ReactNode {
+  render() {
     return (
       <div className="App">
         <header className="App-header" data-testid="header">
@@ -93,7 +86,7 @@ export class AppClass extends Component<FormProps, State> {
           </button>
         </header>
         <main className="App-main">
-          <section ref={this.toChat} className="messageList">
+          <section ref={this.state.toChat} className="messageList">
             <MessageList messages={this.state.messages} />
             <MessageForm addMessage={this.addMessage} />
           </section>

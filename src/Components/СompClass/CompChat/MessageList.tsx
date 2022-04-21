@@ -12,10 +12,7 @@ interface ListProps {
 }
 
 export class MessageList extends Component<ListProps> {
-  constructor(props: ListProps) {
-    super(props);
-  }
-  render(): React.ReactNode {
+  render() {
     return (
       <div className="message-board">
         <h1 className="message-title">Чат с Душнилой</h1>

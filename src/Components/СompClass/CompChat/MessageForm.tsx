@@ -12,13 +12,10 @@ interface FormState {
 }
 
 export class MessageForm extends Component<FormProps, FormState> {
-  constructor(props: FormProps) {
-    super(props);
-    this.state = {
-      autorValue: '',
-      messageValue: '',
-    };
-  }
+  state = {
+    autorValue: '',
+    messageValue: '',
+  };
   clickSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     this.props.addMessage(this.state.messageValue, this.state.autorValue);

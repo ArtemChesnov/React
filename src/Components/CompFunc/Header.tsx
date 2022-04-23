@@ -21,25 +21,26 @@ const navigate = [
 ];
 
 export const Header: FC = () => (
-  <header>
-    <ul className="header-links-list">
-      {navigate.map((link) => (
-        <li key={link.id}>
-          <NavLink
-            className="header-links-item"
-            to={link.to}
-            style={({ isActive }) => ({
-              color: isActive ? 'white' : 'rgba(240, 166, 202, 1)',
-            })}
-          >
-            {link.name}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
-
+  <>
+    <header>
+      <ul className="header-links-list">
+        {navigate.map((link) => (
+          <li key={link.id}>
+            <NavLink
+              className="header-links-item"
+              to={link.to}
+              style={({ isActive }) => ({
+                color: isActive ? 'white' : 'rgba(240, 166, 202, 1)',
+              })}
+            >
+              {link.name}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </header>
     <main>
       <Outlet />
     </main>
-  </header>
+  </>
 );

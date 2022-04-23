@@ -3,8 +3,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(120deg, #17bebb, #f0a6ca);
 }
 
 code {
@@ -12,11 +13,7 @@ code {
     monospace;
 }
 
-body {
-  background: linear-gradient(120deg, #17bebb, #f0a6ca);
-}
-
 main {
   display: flex;
-  height: 100vh;
+  height: 87vh;
 }

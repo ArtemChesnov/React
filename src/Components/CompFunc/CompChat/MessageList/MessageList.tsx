@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import './MessageList.scss';
 
 interface Message {
@@ -13,6 +13,13 @@ interface ListProps {
 }
 
 export const MessageList: FC<ListProps> = ({ messages }) => {
+  const messagesEndRef = useRef<null | HTMLElement>(null);
+  const scrollToBottom = () => {
+    if (messagesEndRef && messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  useEffect(scrollToBottom, [messages]);
   return (
     <div className="chat-wrp">
       <ul className="chat-message-list">
@@ -26,6 +33,7 @@ export const MessageList: FC<ListProps> = ({ messages }) => {
             </p>
           </li>
         ))}
+        <span ref={messagesEndRef}></span>
       </ul>
     </div>
   );

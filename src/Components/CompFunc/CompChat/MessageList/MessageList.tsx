@@ -19,7 +19,7 @@ export const MessageList: FC<ListProps> = ({ messages }) => {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
-  useEffect(scrollToBottom, [messages]);
+  useEffect(scrollToBottom);
   return (
     <div className="chat-wrp">
       <ul className="chat-message-list">
@@ -33,7 +33,7 @@ export const MessageList: FC<ListProps> = ({ messages }) => {
             </p>
           </li>
         ))}
-        <span ref={messagesEndRef}></span>
+        <span ref={() => messagesEndRef}></span>
       </ul>
     </div>
   );

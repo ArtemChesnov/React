@@ -7,7 +7,9 @@ exports[`MessageList render with snapshot 1`] = `
   >
     <ul
       class="chat-message-list"
-    />
+    >
+      <span />
+    </ul>
   </div>
 </DocumentFragment>
 `;

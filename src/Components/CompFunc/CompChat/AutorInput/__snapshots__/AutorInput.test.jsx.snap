@@ -3,7 +3,7 @@
 exports[`AutorInput render with snapshot 1`] = `
 <DocumentFragment>
   <input
-    class="autor-input"
+    class="chat-autor-input"
     placeholder="Введите ваше имя..."
     required=""
     type="text"

@@ -3,7 +3,7 @@
 exports[`MessageInput render with snapshot 1`] = `
 <DocumentFragment>
   <textarea
-    class="message-input"
+    class="chat-message-input"
     placeholder="Напишите сообщение..."
     required=""
   />

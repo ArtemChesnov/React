@@ -17,7 +17,7 @@ export const AutorInput: FC<AutorInputProps> = ({
         setAutorValue(event.target.value);
       }}
       type="text"
-      className="autor-input"
+      className="chat-autor-input"
       required
       placeholder="Введите ваше имя..."
     />

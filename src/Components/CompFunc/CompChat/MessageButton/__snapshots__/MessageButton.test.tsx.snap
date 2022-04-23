@@ -3,7 +3,7 @@
 exports[`MessageButton render with snapshot 1`] = `
 <DocumentFragment>
   <button
-    class="message-button"
+    class="chat-message-button"
     id="button"
     type="submit"
   >

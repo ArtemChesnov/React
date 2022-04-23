@@ -12,7 +12,7 @@ export const MessageInput: FC<MessageInputProps> = ({
 }) => {
   return (
     <textarea
-      className="message-input"
+      className="chat-message-input"
       required
       onChange={(event) => {
         setMessageValue(event.target.value);

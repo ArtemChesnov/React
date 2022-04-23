@@ -10,7 +10,7 @@ export const MessageButton: FC<ButtonProps> = ({ disabled, onClick }) => {
   return (
     <button
       disabled={disabled}
-      className="message-button"
+      className="chat-message-button"
       id="button"
       type="submit"
       onClick={onClick}

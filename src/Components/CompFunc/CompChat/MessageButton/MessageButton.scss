@@ -1,23 +1,32 @@
-.message-button {
-    border: none;
-    border-radius: 15px;
-    padding: 20px 30px;
+.chat-message-button {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 5px 0 5px 0;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 1);
     cursor: pointer;
-    background-color: rgb(212, 212, 212);
-    transition: 0.1s ease-in;
-    right: 0;
+    border: none;
+    margin: 5px 0 0 0;
+    font-family: BlinkMacSystemFont,
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-.message-button:hover {
-    background-color: rgb(184, 178, 178);
+.chat-message-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-.message-button:active {
-    background-color: rgb(10, 10, 10);
-    color: #eee;
+.chat-message-button:active {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-.message-button:disabled {
-    background-color: rgb(46, 34, 34);
-    color: #eee;
+.chat-message-button:disabled {
+    background-color: rgba(255, 255, 255, 0.01);
 }

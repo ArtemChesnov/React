@@ -49,10 +49,19 @@ export const App: FC = () => {
   );
 
   const onAddChat = (chat: Chat) => {
-    setMessages({
-      ...messages,
-      [chat.name]: [],
-    });
+    if (!messages[chat.name]) {
+      setMessages({
+        ...messages,
+        [chat.name]: [],
+      });
+    }
+  };
+
+  const onDeleteChat = (chatName: string) => {
+    const newMessages: Messages = { ...messages };
+    delete newMessages[chatName];
+
+    setMessages({ ...newMessages });
   };
 
   return (
@@ -65,7 +74,13 @@ export const App: FC = () => {
           <Route path="chats">
             <Route
               index
-              element={<ChatList chatList={chatList} onAddChat={onAddChat} />}
+              element={
+                <ChatList
+                  chatList={chatList}
+                  onAddChat={onAddChat}
+                  onDeleteChat={onDeleteChat}
+                />
+              }
             />
             <Route
               path=":chatId"
@@ -75,6 +90,7 @@ export const App: FC = () => {
                   setMessages={setMessages}
                   chatList={chatList}
                   onAddChat={onAddChat}
+                  onDeleteChat={onDeleteChat}
                 />
               }
             />

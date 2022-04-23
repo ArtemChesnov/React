@@ -1,4 +1,4 @@
-.chat {
+.chats {
     background-color: rgba(255, 255, 255, 0.05);
     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -6,6 +6,7 @@
     justify-content: flex-end;
     height: 80vh;
     margin: 0 0 0 50px;
+    width: 30vw;
 
     &-title {
         text-align: center;
@@ -26,6 +27,10 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
+
+        &-item {
+            position: relative;
+        }
 
         &-item:hover {
             background: rgba(255, 255, 255, 0.1);
@@ -111,7 +116,25 @@
             &:disabled {
                 background-color: transparent;
             }
+        }
+    }
 
+    &-delete-btn {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.5);
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+
+        &:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        &:active {
+            color: rgba(255, 255, 255, 0.2);
         }
     }
 

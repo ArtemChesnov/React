@@ -12,12 +12,14 @@ interface ChatsProps {
   setMessages: React.Dispatch<React.SetStateAction<Messages>>;
   chatList: Chat[];
   onAddChat: (chats: Chat) => void;
+  onDeleteChat: (chatName: string) => void;
 }
 export const Chats: FC<ChatsProps> = ({
   chatList,
   onAddChat,
   messages,
   setMessages,
+  onDeleteChat,
 }) => {
   const { chatId } = useParams();
 
@@ -75,8 +77,12 @@ export const Chats: FC<ChatsProps> = ({
   }
 
   return (
-    <div className="chats">
-      <ChatList chatList={chatList} onAddChat={onAddChat} />
+    <div className="chat-home-wrp ">
+      <ChatList
+        chatList={chatList}
+        onAddChat={onAddChat}
+        onDeleteChat={onDeleteChat}
+      />
       <div className="chats-wrp">
         <MessageList messages={chatId ? messages[chatId] : []} />
         <MessageForm addMessage={addMessage} />

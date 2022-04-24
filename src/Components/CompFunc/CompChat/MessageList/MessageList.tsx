@@ -14,14 +14,17 @@ interface ListProps {
 
 export const MessageList: FC<ListProps> = ({ messages }) => {
   const messagesEndRef = useRef<null | HTMLElement>(null);
+
   const scrollToBottom = () => {
-    if (messagesEndRef && messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
-  useEffect(scrollToBottom);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
-    <div className="chat-wrp">
+    <div className="chat-wrp" data-testid="chat">
       <ul className="chat-message-list">
         {messages.map((message) => (
           <li key={message.id} className="chat-message-item">
@@ -33,7 +36,7 @@ export const MessageList: FC<ListProps> = ({ messages }) => {
             </p>
           </li>
         ))}
-        <span ref={() => messagesEndRef}></span>
+        <span ref={messagesEndRef}></span>
       </ul>
     </div>
   );

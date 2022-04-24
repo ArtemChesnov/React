@@ -5,6 +5,8 @@ import { MessageList } from './MessageList';
 
 describe('MessageList', () => {
   it('Render component', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    window.HTMLElement.prototype.scrollIntoView = function () {};
     render(<MessageList messages={[]} />);
   });
 

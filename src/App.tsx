@@ -1,12 +1,12 @@
-import { nanoid } from 'nanoid';
 import React, { FC, useMemo, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.scss';
-import { ChatList } from './Components/CompFunc/ChatList';
 import { Header } from './Components/CompFunc/Header';
 import { Chats } from './pages/Chats';
+import { ChatList } from './Components/CompFunc/ChatList';
 import { Home } from './pages/Home';
 import { Profile } from './pages/Profile';
+import { nanoid } from 'nanoid';
+import './App.scss';
 
 export interface Chat {
   id: string;
@@ -96,7 +96,6 @@ export const App: FC = () => {
             />
           </Route>
         </Route>
-
         <Route path="*" element={<h2>404</h2>} />
       </Routes>
     </BrowserRouter>

@@ -83,7 +83,7 @@ export const Chats: FC<ChatsProps> = ({
         onAddChat={onAddChat}
         onDeleteChat={onDeleteChat}
       />
-      <div className="chats-wrp">
+      <div className="chat-board-wrp">
         <MessageList messages={chatId ? messages[chatId] : []} />
         <MessageForm addMessage={addMessage} />
       </div>

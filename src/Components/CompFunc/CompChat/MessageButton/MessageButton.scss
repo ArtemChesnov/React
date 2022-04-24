@@ -17,16 +17,16 @@
         "Helvetica Neue",
         sans-serif;
     -webkit-font-smoothing: antialiased;
-}
 
-.chat-message-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 
-.chat-message-button:active {
-    background-color: rgba(255, 255, 255, 0.5);
-}
+    &:active {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
 
-.chat-message-button:disabled {
-    background-color: rgba(255, 255, 255, 0.01);
+    &:disabled {
+        background-color: rgba(255, 255, 255, 0.01);
+    }
 }

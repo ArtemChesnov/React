@@ -24,7 +24,7 @@ export const MessageList: FC<ListProps> = ({ messages }) => {
   }, [messages]);
 
   return (
-    <div className="chat-wrp" data-testid="chat">
+    <div className="chat" data-testid="chat">
       <ul className="chat-message-list">
         {messages.map((message) => (
           <li key={message.id} className="chat-message-item">

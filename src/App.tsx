@@ -96,7 +96,19 @@ export const App: FC = () => {
             />
           </Route>
         </Route>
-        <Route path="*" element={<h2>404</h2>} />
+        <Route
+          path="*"
+          element={
+            <div className="err-wrp">
+              <div className="err-circle-wrp">
+                <div className="err-circle-parent">
+                  <h2 className="err-tittle">404</h2>
+                  <p className="err-text">Упс...Что-то пошло не так...</p>
+                </div>
+              </div>
+            </div>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

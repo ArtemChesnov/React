@@ -1,12 +1,15 @@
 .chats {
-    background-color: rgba(255, 255, 255, 0.05);
-    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-    height: 80vh;
-    margin: 0 0 0 50px;
-    width: 30vw;
+    &-wrp {
+        background-color: rgba(255, 255, 255, 0.05);
+        box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        height: 80vh;
+        margin: 0 0 0 50px;
+        width: 30vw;
+        height: 80vh;
+    }
 
     &-title {
         text-align: center;

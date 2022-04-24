@@ -1,9 +1,9 @@
 import React, { Component, RefObject } from 'react';
-import { MessageStart } from './Components/СompClass/Message';
-import { MessageList } from './Components/СompClass/CompChat/MessageList';
-import { MessageForm } from './Components/СompClass/CompChat/MessageForm';
+import { MessageStart } from './Message';
+import { MessageList } from './CompChat/MessageList';
+import { MessageForm } from './CompChat/MessageForm';
 import { nanoid } from 'nanoid';
-import './App';
+import '../../App';
 
 interface FormProps {
   autorValue: string;

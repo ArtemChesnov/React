@@ -3,36 +3,29 @@
 exports[`MessageForm render with snapshot 1`] = `
 <DocumentFragment>
   <form
+    class="form"
     data-testid="form"
   >
-    <div
-      class="mesageFromUser-form"
+    <input
+      class="autor__input"
+      placeholder="Введите ваше имя..."
+      required=""
+      type="text"
+      value=""
+    />
+    <textarea
+      class="message__input"
+      placeholder="Напишите сообщение..."
+      required=""
+    />
+    <button
+      class="message__button"
+      disabled=""
+      id="button"
+      type="submit"
     >
-      <div
-        class="message-form"
-      >
-        <input
-          class="autor-input"
-          placeholder="Введите ваше имя..."
-          required=""
-          type="text"
-          value=""
-        />
-        <textarea
-          class="message-input"
-          placeholder="Напишите сообщение..."
-          required=""
-        />
-        <button
-          class="message-button"
-          disabled=""
-          id="button"
-          type="submit"
-        >
-          Отправить
-        </button>
-      </div>
-    </div>
+      Отправить
+    </button>
   </form>
 </DocumentFragment>
 `;

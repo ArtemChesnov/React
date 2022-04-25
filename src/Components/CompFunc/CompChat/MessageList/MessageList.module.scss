@@ -1,0 +1,91 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.1);
+
+    &__list {
+        overflow: scroll;
+        overflow-x: hidden;
+        height: 60vh;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+
+        &::-webkit-scrollbar {
+
+            width: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5em;
+            box-shadow: inset 1px 1px 5px #f3faf7;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 5em;
+        }
+    }
+
+    &__item {
+        width: 75%;
+        margin: 2em 2em;
+        padding: 1em 0;
+        background: rgba(255, 255, 255, 0.2);
+        color: #FFF;
+
+        &:nth-of-type(odd) {
+            position: relative;
+
+            &.message__item::after {
+                content: "";
+                position: absolute;
+                margin: -1.5em 1.87em;
+                width: 0;
+                height: 0;
+                left: -40px;
+                top: 30px;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-right: 10px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        &:nth-of-type(even) {
+            position: relative;
+            margin: 2em 5em;
+
+            &.message__item::after {
+                content: "";
+                position: absolute;
+                margin: -1.5em 1.87em;
+                width: 0;
+                height: 0;
+                right: -40px;
+                top: 30px;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-left: 10px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+    }
+
+    &__autor {
+        font-size: 1em;
+        margin: -0.25em 2em;
+        font-weight: 300;
+    }
+
+    &__text {
+        font-weight: 300;
+        font-size: 0.7em;
+        margin: 0 2.8em;
+        position: relative;
+    }
+
+    &__time {
+        right: 0;
+        position: absolute;
+    }
+}

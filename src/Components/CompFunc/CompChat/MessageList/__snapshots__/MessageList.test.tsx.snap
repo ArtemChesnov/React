@@ -3,20 +3,14 @@
 exports[`MessageList render with snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="message-board"
+    class="message"
+    data-testid="chat"
   >
-    <h1
-      class="message-title"
+    <ul
+      class="message__list"
     >
-      Чат с Душнилой
-    </h1>
-    <div
-      class="message-chat"
-    >
-      <ul
-        class="message-list"
-      />
-    </div>
+      <span />
+    </ul>
   </div>
 </DocumentFragment>
 `;

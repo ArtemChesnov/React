@@ -37,7 +37,7 @@ describe('MessageButton', () => {
 
   it('button have style message-button', () => {
     render(<MessageButton disabled={false} />);
-    expect(screen.getByText('Отправить')).toHaveClass('message-button');
+    expect(screen.getByText('Отправить')).toHaveClass('message__button');
   });
 
   it('button click with userEvent', async () => {

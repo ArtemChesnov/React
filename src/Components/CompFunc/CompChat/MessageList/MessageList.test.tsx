@@ -5,6 +5,8 @@ import { MessageList } from './MessageList';
 
 describe('MessageList', () => {
   it('Render component', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    window.HTMLElement.prototype.scrollIntoView = function () {};
     render(<MessageList messages={[]} />);
   });
 
@@ -17,7 +19,7 @@ describe('MessageList', () => {
     render(
       <MessageList
         messages={[
-          { id: '1', autor: 'Render', value: 'Message', now: '11-00' },
+          { id: '1', author: 'Render', value: 'Message', now: '11-00' },
         ]}
       />
     );

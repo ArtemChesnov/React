@@ -46,7 +46,7 @@ describe('MessageForm', () => {
 
   it('have a button', () => {
     render(<MessageForm addMessage={Object} />);
-    expect(screen.getByText('Отправить')).toHaveClass('message-button');
+    expect(screen.getByText('Отправить')).toHaveClass('message__button');
   });
 
   it('send a message', () => {

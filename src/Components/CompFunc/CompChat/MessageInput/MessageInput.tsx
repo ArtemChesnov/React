@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './MessageInput.scss';
+import style from './MessageInput.module.scss';
 
 interface MessageInputProps {
   messageValue: string;
@@ -12,7 +12,7 @@ export const MessageInput: FC<MessageInputProps> = ({
 }) => {
   return (
     <textarea
-      className="message-input"
+      className={style.message__input}
       required
       onChange={(event) => {
         setMessageValue(event.target.value);

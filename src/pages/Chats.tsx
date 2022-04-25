@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { ChatList } from '../Components/CompFunc/ChatList';
 import { Chat, Messages } from '../App';
 import { Navigate, useParams } from 'react-router-dom';
-import './Chats.scss';
+import style from './Chats.module.scss';
 
 interface ChatsProps {
   messages: Messages;
@@ -27,7 +27,7 @@ export const Chats: FC<ChatsProps> = ({
     if (
       chatId &&
       messages[chatId]?.length > 0 &&
-      messages[chatId][messages[chatId].length - 1].autor !== 'Душнила'
+      messages[chatId][messages[chatId].length - 1].author !== 'Душнила'
     ) {
       const timeout = setTimeout(() => {
         setMessages({
@@ -36,9 +36,9 @@ export const Chats: FC<ChatsProps> = ({
             ...messages[chatId],
             {
               id: nanoid(),
-              autor: 'Душнила',
+              author: 'Душнила',
               value: `Привет ${
-                messages[chatId][messages[chatId].length - 1].autor
+                messages[chatId][messages[chatId].length - 1].author
               }, ты скучный!`,
               now: new Date().toLocaleTimeString().slice(0, -3),
             },
@@ -61,7 +61,7 @@ export const Chats: FC<ChatsProps> = ({
             ...prevMessage[chatId],
             {
               id: nanoid(),
-              autor: autorValue,
+              author: autorValue,
               value: messageValue,
               now: new Date().toLocaleTimeString().slice(0, -3),
             },
@@ -77,13 +77,13 @@ export const Chats: FC<ChatsProps> = ({
   }
 
   return (
-    <div className="chat-home-wrp ">
+    <div className={style.chat__wrp}>
       <ChatList
         chatList={chatList}
         onAddChat={onAddChat}
         onDeleteChat={onDeleteChat}
       />
-      <div className="chat-board-wrp">
+      <div className={style.chat__board}>
         <MessageList messages={chatId ? messages[chatId] : []} />
         <MessageForm addMessage={addMessage} />
       </div>

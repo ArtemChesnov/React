@@ -1,0 +1,26 @@
+.links {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+
+}
+
+.active {
+    color: azure;
+    text-decoration: none;
+    transition: 0.2s;
+
+    &:hover {
+        color: #0b5554,
+    }
+}
+
+.none {
+    color: rgba(240, 166, 202, 1);
+    text-decoration: none;
+    transition: 0.2s;
+
+    &:hover {
+        color: #0b5554,
+    }
+}

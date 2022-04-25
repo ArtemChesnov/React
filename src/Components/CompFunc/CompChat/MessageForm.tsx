@@ -2,7 +2,7 @@ import React, { FC, useState, memo } from 'react';
 import { AutorInput } from './AutorInput/AutorInput';
 import { MessageButton } from './MessageButton/MessageButton';
 import { MessageInput } from './MessageInput/MessageInput';
-import './MessageForm.scss';
+import style from './MessageForm.module.scss';
 
 interface FormProps {
   addMessage: (autorValue: string, messageValue: string) => void;
@@ -20,7 +20,7 @@ export const MessageForm: FC<FormProps> = memo(({ addMessage }) => {
   };
 
   return (
-    <form onSubmit={handleSubmitForm} className="chat-form" data-testid="form">
+    <form onSubmit={handleSubmitForm} className={style.form} data-testid="form">
       <AutorInput autorValue={autorValue} setAutorValue={setAutorValue} />
       <MessageInput
         setMessageValue={setMessageValue}

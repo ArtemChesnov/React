@@ -6,7 +6,7 @@ import { ChatList } from './Components/CompFunc/ChatList';
 import { Home } from './pages/Home';
 import { Profile } from './pages/Profile';
 import { nanoid } from 'nanoid';
-import './App.scss';
+import style from './App.module.scss';
 
 export interface Chat {
   id: string;
@@ -17,8 +17,8 @@ const initialMessage: Messages = {
   default: [
     {
       id: '1',
-      autor: 'GeekBrains',
-      value: 'Hello geekbrains',
+      author: 'GeekBrains',
+      value: 'Hello, I`m geekbrains',
       now: new Date().toLocaleTimeString().slice(0, -3),
     },
   ],
@@ -26,7 +26,7 @@ const initialMessage: Messages = {
 
 export interface Message {
   id: string;
-  autor: string;
+  author: string;
   value: string;
   now: string;
 }
@@ -99,11 +99,11 @@ export const App: FC = () => {
         <Route
           path="*"
           element={
-            <div className="err-wrp">
-              <div className="err-circle-wrp">
-                <div className="err-circle-parent">
-                  <h2 className="err-tittle">404</h2>
-                  <p className="err-text">Упс...Что-то пошло не так...</p>
+            <div className={style.err}>
+              <div className={style.wrp}>
+                <div className={style.circle}>
+                  <h2 className={style.tittle}>404</h2>
+                  <p className={style.text}>Упс...Что-то пошло не так...</p>
                 </div>
               </div>
             </div>

@@ -17,13 +17,13 @@ TestMessage.args = {
   messages: [
     {
       id: '1',
-      autor: 'Артём',
+      author: 'Артём',
       value: 'Hi!',
       now: '10:10',
     },
     {
       id: '2',
-      autor: 'Душнила',
+      author: 'Душнила',
       value: 'Привет Артём, капец ты скучный...',
       now: '10:12',
     },

@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useRef } from 'react';
-import './MessageList.scss';
+import style from './MessageList.module.scss';
 
 interface Message {
   id: string;
-  autor: string;
+  author: string;
   value: string;
   now: string;
 }
@@ -24,15 +24,15 @@ export const MessageList: FC<ListProps> = ({ messages }) => {
   }, [messages]);
 
   return (
-    <div className="chat" data-testid="chat">
-      <ul className="chat-message-list">
+    <div className={style.message} data-testid="chat">
+      <ul className={style.message__list}>
         {messages.map((message) => (
-          <li key={message.id} className="chat-message-item">
-            <h1 className="chat-message-autor">{message.autor}</h1>
+          <li key={message.id} className={style.message__item}>
+            <h1 className={style.message__autor}>{message.author}</h1>
             <br />
-            <p className="chat-message-text">
+            <p className={style.message__text}>
               {message.value}
-              <span className="chat-message-time">{message.now}</span>
+              <span className={style.message__time}>{message.now}</span>
             </p>
           </li>
         ))}

@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Chat } from '../../App';
 import { NavLink } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import './ChatList.scss';
+import style from './ChatList.module.scss';
 
 interface ChatListProps {
   chatList: Chat[];
@@ -29,13 +29,13 @@ export const ChatList: FC<ChatListProps> = ({
   };
 
   return (
-    <div className="chats">
-      <div className="chats-wrp">
-        <ul className="chats-list">
+    <div className={style.chats}>
+      <div className={style.wrp}>
+        <ul className={style.list}>
           {chatList.map((chat) => (
-            <li className="chats-list-item" key={chat.id}>
+            <li className={style.list__item} key={chat.id}>
               <NavLink
-                className="chats-list-links"
+                className={style.list__links}
                 to={`/chats/${chat.name}`}
                 style={({ isActive }) => ({
                   background: isActive ? 'rgba(255, 255, 255, 0.1)' : 'none',
@@ -44,7 +44,7 @@ export const ChatList: FC<ChatListProps> = ({
                 {chat.name}
               </NavLink>
               <button
-                className="chats-delete-btn"
+                className={style.btn}
                 onClick={() => onDeleteChat(chat.name)}
               >
                 x
@@ -52,15 +52,15 @@ export const ChatList: FC<ChatListProps> = ({
             </li>
           ))}
         </ul>
-        <h1 className="chats-title">chatlist</h1>
-        <form className="chats-form" onSubmit={handleSubmit}>
+        <h1 className={style.title}>chatlist</h1>
+        <form className={style.form} onSubmit={handleSubmit}>
           <input
-            className="chats-form-input"
+            className={style.form__input}
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <button disabled={!name} className="chats-form-btn" type="submit">
+          <button disabled={!name} className={style.form__btn} type="submit">
             Add chat
           </button>
         </form>

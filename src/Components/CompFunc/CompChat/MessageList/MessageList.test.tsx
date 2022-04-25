@@ -19,7 +19,7 @@ describe('MessageList', () => {
     render(
       <MessageList
         messages={[
-          { id: '1', autor: 'Render', value: 'Message', now: '11-00' },
+          { id: '1', author: 'Render', value: 'Message', now: '11-00' },
         ]}
       />
     );

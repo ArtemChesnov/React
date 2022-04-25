@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './MessageButton.scss';
+import style from './MessageButton.module.scss';
 
 interface ButtonProps {
   disabled: boolean;
@@ -10,7 +10,7 @@ export const MessageButton: FC<ButtonProps> = ({ disabled, onClick }) => {
   return (
     <button
       disabled={disabled}
-      className="chat-message-button"
+      className={style.message__button}
       id="button"
       type="submit"
       onClick={onClick}

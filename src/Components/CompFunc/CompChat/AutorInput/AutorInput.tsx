@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './AutorInput.scss';
+import style from './AutorInput.module.scss';
 
 interface AutorInputProps {
   autorValue: string;
@@ -17,7 +17,7 @@ export const AutorInput: FC<AutorInputProps> = ({
         setAutorValue(event.target.value);
       }}
       type="text"
-      className="chat-autor-input"
+      className={style.autor__input}
       required
       placeholder="Введите ваше имя..."
     />

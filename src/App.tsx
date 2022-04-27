@@ -16,7 +16,7 @@ export interface Chat {
 }
 
 const initialMessage: Messages = {
-  default: [
+  GeekBrains: [
     {
       id: '1',
       author: 'GeekBrains',

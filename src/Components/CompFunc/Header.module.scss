@@ -5,22 +5,20 @@
 
 }
 
-.active {
-    color: azure;
+.active,
+.none {
     text-decoration: none;
-    transition: 0.2s;
+    transition: 0.1s;
 
     &:hover {
         color: #0b5554,
     }
 }
 
+.active {
+    color: azure;
+}
+
 .none {
     color: rgba(240, 166, 202, 1);
-    text-decoration: none;
-    transition: 0.2s;
-
-    &:hover {
-        color: #0b5554,
-    }
 }

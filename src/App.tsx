@@ -1,13 +1,14 @@
 import React, { FC, useMemo, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { Header } from './Components/CompFunc/Header';
-import { Chats } from './pages/Chats';
-import { ChatList } from './Components/CompFunc/ChatList';
-import { Home } from './pages/Home';
-import { Profile } from './pages/Profile';
 import { nanoid } from 'nanoid';
-import style from './App.module.scss';
+
+import { Profile } from './pages/Profile';
+import { Home } from './pages/Home';
+import { Chats } from './pages/Chats';
+import { Error } from './pages/Error';
+import { Header } from './Components/CompFunc/Header';
+import { ChatList } from './Components/CompFunc/ChatList';
 import { store } from './store';
 
 export interface Chat {
@@ -99,19 +100,7 @@ export const App: FC = () => {
               />
             </Route>
           </Route>
-          <Route
-            path="*"
-            element={
-              <div className={style.err}>
-                <div className={style.wrp}>
-                  <div className={style.circle}>
-                    <h2 className={style.tittle}>404</h2>
-                    <p className={style.text}>Упс...Что-то пошло не так...</p>
-                  </div>
-                </div>
-              </div>
-            }
-          />
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </Provider>

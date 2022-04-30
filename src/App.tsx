@@ -1,108 +1,41 @@
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { nanoid } from 'nanoid';
 
-import { Profile } from './pages/Profile';
-import { Home } from './pages/Home';
-import { Chats } from './pages/Chats';
-import { Error } from './pages/Error';
+import { Profile } from 'src/pages/Profile';
+import { Home } from 'src/pages/Home';
+import { Error } from 'src/pages/Error';
 import { Header } from './Components/CompFunc/Header';
-import { ChatList } from './Components/CompFunc/ChatList';
-import { store } from './store';
+import { Loader } from 'src/pages/Loader';
 
-export interface Chat {
-  id: string;
-  name: string;
-}
+const ChatList = React.lazy(() =>
+  import('src/Components/CompFunc/ChatList').then((module) => ({
+    default: module.ChatList,
+  }))
+);
 
-const initialMessage: Messages = {
-  GeekBrains: [
-    {
-      id: '1',
-      author: 'GeekBrains',
-      value: 'Hello, I`m geekbrains',
-      now: new Date().toLocaleTimeString().slice(0, -3),
-    },
-  ],
-};
-
-export interface Message {
-  id: string;
-  author: string;
-  value: string;
-  now: string;
-}
-
-export interface Messages {
-  [key: string]: Message[];
-}
+const Chats = React.lazy(() =>
+  import('./pages/Chats').then((module) => ({
+    default: module.Chats,
+  }))
+);
 
 export const App: FC = () => {
-  const [messages, setMessages] = useState<Messages>(initialMessage);
-
-  const chatList = useMemo(
-    () =>
-      Object.entries(messages).map((chat) => ({
-        id: nanoid(),
-        name: chat[0],
-      })),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [Object.entries(messages).length]
-  );
-
-  const onAddChat = (chat: Chat) => {
-    if (!messages[chat.name]) {
-      setMessages({
-        ...messages,
-        [chat.name]: [],
-      });
-    }
-  };
-
-  const onDeleteChat = (chatName: string) => {
-    const newMessages: Messages = { ...messages };
-    delete newMessages[chatName];
-
-    setMessages({ ...newMessages });
-  };
-
   return (
-    <Provider store={store}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
             <Route path="profile" element={<Profile />} />
 
             <Route path="chats">
-              <Route
-                index
-                element={
-                  <ChatList
-                    chatList={chatList}
-                    onAddChat={onAddChat}
-                    onDeleteChat={onDeleteChat}
-                  />
-                }
-              />
-              <Route
-                path=":chatId"
-                element={
-                  <Chats
-                    messages={messages}
-                    setMessages={setMessages}
-                    chatList={chatList}
-                    onAddChat={onAddChat}
-                    onDeleteChat={onDeleteChat}
-                  />
-                }
-              />
+              <Route index element={<ChatList />} />
+              <Route path=":chatId" element={<Chats />} />
             </Route>
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>
-      </BrowserRouter>
-    </Provider>
+      </Suspense>
+    </BrowserRouter>
   );
 };

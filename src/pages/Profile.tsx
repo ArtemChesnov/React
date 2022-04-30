@@ -1,21 +1,21 @@
 import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ProfileState } from 'src/store/profile/reducer';
-import { changeName, toggleProfile } from '../store/profile/actions';
+import { selectName, selectVisible } from 'src/store/profile/selectors';
+import { changeName, toggleProfile } from 'src/store/profile/actions';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
 
-  const visible = useSelector((state: ProfileState) => state.visible);
-  const name = useSelector((state: ProfileState) => state.name);
+  const visible = useSelector(selectVisible);
+  const name = useSelector(selectName);
 
   return (
     <>
       <h2>Profile</h2>
       <div>
         <p>{name}</p>
-        <input type="checkbox" checked={visible} />
+        <input type="checkbox" checked={visible} readOnly />
         <button onClick={() => dispatch(toggleProfile())}>click</button>
         <br />
         <input

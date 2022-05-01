@@ -1,7 +1,7 @@
 .message {
     display: flex;
     flex-direction: column;
-    width: 60vw;
+    width: 65vw;
     justify-content: space-between;
     background: rgba(255, 255, 255, 0.1);
 
@@ -30,7 +30,7 @@
 
     &__item {
         width: 75%;
-        margin: 2em 2em;
+        margin: 2em 2em 2em 4em;
         padding: 1em 0;
         background: rgba(255, 255, 255, 0.2);
         color: #FFF;
@@ -54,7 +54,7 @@
 
         &:nth-of-type(even) {
             position: relative;
-            margin: 2em 5em;
+            margin: 2em 2em 2em 10em;
 
             &.message__item::after {
                 content: "";

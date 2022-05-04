@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef } from 'react';
 import style from './MessageList.module.scss';
 
-interface Message {
+export interface Message {
   id: string;
   author: string;
   value: string;

@@ -10,7 +10,7 @@ export const addChat: AddChat = (chatName) => ({
   chatName,
 });
 
-export const deleteChat: DeleteChat = (chatId: string) => ({
+export const deleteChat: DeleteChat = (chatId) => ({
   type: DELETE_CHAT,
   chatId,
 });

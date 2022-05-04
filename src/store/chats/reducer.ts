@@ -43,7 +43,7 @@ export const chatReducer: Reducer<ChatsState, ChatsActions> = (
             id: nanoid(),
             author: action.message.author,
             value: action.message.value,
-            now: new Date().toLocaleTimeString().slice(0, -3),
+            now: action.message.now,
           },
         ],
       };

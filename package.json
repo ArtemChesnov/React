@@ -81,6 +81,7 @@
     "husky": "^4.3.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "jest-redux-thunk": "^1.1.1",
     "lint-staged": "^12.3.7",
     "loki": "^0.29.0",
     "mini-css-extract-plugin": "^2.6.0",

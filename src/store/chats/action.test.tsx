@@ -1,6 +1,8 @@
 import { addChat, addMessage, deleteChat } from './actions';
 import { chatReducer, ChatsState } from './reducer';
 import { ChatsActions } from './types';
+import 'jest-redux-thunk';
+
 describe('chat reducer', () => {
   it('addChat action', () => {
     const action: ChatsActions = addChat('GB1');

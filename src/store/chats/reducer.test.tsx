@@ -49,22 +49,6 @@ describe('chat reducer', () => {
     expect(chatReducer(state, action)).toEqual({ Chat: [] });
   });
 
-  // it('reducers', () => {
-  //   const state = chatReducer(undefined, {
-  //     type: default,
-  //   });
-  //   expect(state).toEqual({
-  //     gb: [
-  //       {
-  //         id: '1',
-  //         author: 'GeekBrains',
-  //         value: 'Hello, I`m geekbrains',
-  //         now: new Date().toLocaleTimeString().slice(0, -3),
-  //       },
-  //     ],
-  //   });
-  // });
-
   it('thunk action', () => {
     const dispatchMock = jest.fn();
     dispatchMock({

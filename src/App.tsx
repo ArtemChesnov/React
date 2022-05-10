@@ -1,43 +1,17 @@
-import React, { FC, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { FC } from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import { Profile } from 'src/pages/Profile';
-import { Home } from 'src/pages/Home';
-import { Error } from 'src/pages/Error';
-import { Header } from './Components/CompFunc/Header';
-import { Loader } from 'src/pages/Loader';
-import { About, AboutWithConnect } from './pages/About';
+import { Provider } from 'react-redux';
+import { AppRouter } from './Components/AppRouter';
 
-const ChatList = React.lazy(() =>
-  import('src/Components/CompFunc/ChatList').then((module) => ({
-    default: module.ChatList,
-  }))
-);
-
-const Chats = React.lazy(() =>
-  import('./pages/Chats').then((module) => ({
-    default: module.Chats,
-  }))
-);
+import { persistor, store } from './store';
 
 export const App: FC = () => {
   return (
-    <BrowserRouter>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<Header />}>
-            <Route index element={<Home />} />
-            <Route path="profile" element={<Profile />} />
-
-            <Route path="chats">
-              <Route index element={<ChatList />} />
-              <Route path=":chatId" element={<Chats />} />
-            </Route>
-            <Route path="about" element={<AboutWithConnect />} />
-          </Route>
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <AppRouter />
+      </PersistGate>
+    </Provider>
   );
 };

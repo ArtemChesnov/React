@@ -13,6 +13,7 @@
     "deploy:coverage": "npm run test:coverage && gh-pages -d coverage/lcov-report",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "jest": "jest",
     "test": "jest && npm run loki:test",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
@@ -25,6 +26,7 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.6.1",
+    "@reduxjs/toolkit": "^1.8.1",
     "addon-redux": "^2.0.11",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
@@ -32,6 +34,7 @@
     "react-redux": "^8.0.1",
     "redux": "^4.2.0",
     "redux-mock-store": "^1.5.4",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "sass": "^1.50.0",
     "sass-loader": "^12.6.0"

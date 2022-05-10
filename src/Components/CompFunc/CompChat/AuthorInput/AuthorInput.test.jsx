@@ -1,5 +1,5 @@
 import React from 'react';
-import { AutorInput } from './AutorInput';
+import { AuthorInput } from './AuthorInput';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Enzyme from 'enzyme';
@@ -8,11 +8,11 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('AutorInput', () => {
   it('render component', () => {
-    render(<AutorInput autorValue="" setAutorValue={jest.fn()} />);
+    render(<AuthorInput authorValue="" setAuthorValue={jest.fn()} />);
   });
 
   it('input to be in document', () => {
-    render(<AutorInput autorValue="" setAutorValue={jest.fn()} />);
+    render(<AuthorInput authorValue="" setAuthorValue={jest.fn()} />);
     expect(
       screen.getByPlaceholderText('Введите ваше имя...')
     ).toBeInTheDocument();
@@ -21,15 +21,15 @@ describe('AutorInput', () => {
   it('multiple render', () => {
     render(
       <>
-        <AutorInput autorValue="" setAutorValue={jest.fn()} />
-        <AutorInput autorValue="" setAutorValue={jest.fn()} />
+        <AuthorInput authorValue="" setAuthorValue={jest.fn()} />
+        <AuthorInput authorValue="" setAuthorValue={jest.fn()} />
       </>
     );
     expect(screen.getAllByRole('textbox').length).toBe(2);
   });
 
   it('render with value', () => {
-    render(<AutorInput autorValue="Name" setAutorValue={jest.fn()} />);
+    render(<AuthorInput authorValue="Name" setAuthorValue={jest.fn()} />);
     expect(screen.getByDisplayValue(/Name/)).toBeInTheDocument();
   });
 
@@ -39,7 +39,7 @@ describe('AutorInput', () => {
       target: { value: 'the-value' },
     };
     const component = Enzyme.shallow(
-      <AutorInput autorValue="Artem" setAutorValue={onSearchMock} />
+      <AuthorInput authorValue="Artem" setAuthorValue={onSearchMock} />
     );
     component.find('input').simulate('change', event);
     expect(onSearchMock).toBeCalledWith('the-value');
@@ -48,7 +48,7 @@ describe('AutorInput', () => {
   it('input value change by typing', () => {
     const onSearchMock = jest.fn();
     const component = Enzyme.mount(
-      <AutorInput setAutorValue={onSearchMock} autorValue="Artem" />
+      <AuthorInput setAuthorValue={onSearchMock} authorValue="Artem" />
     );
     component.find('input').simulate('change');
     expect(onSearchMock).toBeCalledWith('Artem');
@@ -56,7 +56,7 @@ describe('AutorInput', () => {
 
   it('render with snapshot', () => {
     const { asFragment } = render(
-      <AutorInput autorValue="" setAutorValue={jest.fn()} />
+      <AuthorInput authorValue="" setAuthorValue={jest.fn()} />
     );
     expect(asFragment()).toMatchSnapshot();
   });

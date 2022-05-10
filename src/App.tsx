@@ -6,6 +6,7 @@ import { Home } from 'src/pages/Home';
 import { Error } from 'src/pages/Error';
 import { Header } from './Components/CompFunc/Header';
 import { Loader } from 'src/pages/Loader';
+import { About, AboutWithConnect } from './pages/About';
 
 const ChatList = React.lazy(() =>
   import('src/Components/CompFunc/ChatList').then((module) => ({
@@ -32,6 +33,7 @@ export const App: FC = () => {
               <Route index element={<ChatList />} />
               <Route path=":chatId" element={<Chats />} />
             </Route>
+            <Route path="about" element={<AboutWithConnect />} />
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>

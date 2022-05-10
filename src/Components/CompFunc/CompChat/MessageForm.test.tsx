@@ -73,15 +73,4 @@ describe('MessageForm', () => {
     fireEvent.click(screen.getByRole('button'));
     expect(screen.getByText(/Message/)).toBeInTheDocument();
   });
-
-  // it('form submit test', () => {
-  //   const mockHandler = jest.fn();
-  //   render(
-  //     <Provider store={store}>
-  //       <MessageForm addMessage />
-  //     </Provider>,
-  //   );
-  //   fireEvent.submit(screen.getByTestId('form'));
-  //   expect(mockHandler).toBeCalledTimes(1);
-  // });
 });

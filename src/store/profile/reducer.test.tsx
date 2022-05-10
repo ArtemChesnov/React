@@ -1,7 +1,7 @@
 import { profileReducer, initialState, ProfileState } from '../profile/reducer';
 import { ProfileActions } from '../profile/types';
 
-describe('post reducer', () => {
+describe('profile reducer', () => {
   it('reducers', () => {
     const state = profileReducer(
       { visible: true, name: 'Artem' },

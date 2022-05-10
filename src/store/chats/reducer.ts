@@ -1,17 +1,10 @@
 import { ADD_CHAT, DELETE_CHAT, ADD_MESSAGE } from './actions';
 import { Reducer } from 'redux';
-import { ChatsActions } from './types';
+import { ChatsActions, MessageState } from './types';
 import { nanoid } from 'nanoid';
 
-export interface Message {
-  id: string;
-  author: string;
-  value: string;
-  now: string;
-}
-
 export interface ChatsState {
-  [key: string]: Message[];
+  [key: string]: MessageState[];
 }
 
 export const initialState: ChatsState = {
@@ -48,9 +41,9 @@ export const chatReducer: Reducer<ChatsState, ChatsActions> = (
           ...state[action.chatId],
           {
             id: nanoid(),
-            author: action.author,
-            value: action.message,
-            now: new Date().toLocaleTimeString().slice(0, -3),
+            author: action.message.author,
+            value: action.message.value,
+            now: action.message.now,
           },
         ],
       };

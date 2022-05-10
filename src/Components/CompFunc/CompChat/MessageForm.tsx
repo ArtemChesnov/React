@@ -3,18 +3,23 @@ import { AutorInput } from './AutorInput/AutorInput';
 import { MessageButton } from './MessageButton/MessageButton';
 import { MessageInput } from './MessageInput/MessageInput';
 import style from './MessageForm.module.scss';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addMessage } from '../../../store/chats/actions';
 
-interface FormProps {
-  addMessage: (autorValue: string, messageValue: string) => void;
-}
-
-export const MessageForm: FC<FormProps> = memo(({ addMessage }) => {
+export const MessageForm: FC = memo(() => {
   const [autorValue, setAutorValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
 
+  const dispatch = useDispatch();
+  const { chatId } = useParams();
+
   const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    addMessage(autorValue, messageValue);
+    if (chatId) {
+      dispatch(addMessage(chatId, messageValue, autorValue));
+    }
+
     setAutorValue('');
     setMessageValue('');
   };

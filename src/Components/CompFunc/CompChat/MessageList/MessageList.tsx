@@ -16,7 +16,9 @@ export const MessageList: FC<ListProps> = ({ messages }) => {
   const messagesEndRef = useRef<null | HTMLElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {

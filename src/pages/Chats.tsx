@@ -1,76 +1,46 @@
-import React, { FC, useCallback, useEffect } from 'react';
-import { MessageList } from './../Components/CompFunc/CompChat/MessageList/MessageList';
-import { MessageForm } from './../Components/CompFunc/CompChat/MessageForm';
-import { nanoid } from 'nanoid';
-import { ChatList } from '../Components/CompFunc/ChatList';
-import { Chat, Messages } from '../App';
+import React, { FC } from 'react';
+import { MessageList } from 'src/Components/CompFunc/CompChat/MessageList/MessageList';
+import { MessageForm } from 'src/Components/CompFunc/CompChat/MessageForm';
+import { ChatList } from 'src/Components/CompFunc/ChatList';
 import { Navigate, useParams } from 'react-router-dom';
 import style from './Chats.module.scss';
+import { useSelector } from 'react-redux';
+import { selectChats, selectChatList } from 'src/store/chats/selectors';
 
-interface ChatsProps {
-  messages: Messages;
-  setMessages: React.Dispatch<React.SetStateAction<Messages>>;
-  chatList: Chat[];
-  onAddChat: (chats: Chat) => void;
-  onDeleteChat: (chatName: string) => void;
-}
-export const Chats: FC<ChatsProps> = ({
-  chatList,
-  onAddChat,
-  messages,
-  setMessages,
-  onDeleteChat,
-}) => {
+export const Chats: FC = () => {
   const { chatId } = useParams();
 
-  useEffect(() => {
-    if (
-      chatId &&
-      messages[chatId]?.length > 0 &&
-      messages[chatId][messages[chatId].length - 1].author !== 'Душнила'
-    ) {
-      const timeout = setTimeout(() => {
-        setMessages({
-          ...messages,
-          [chatId]: [
-            ...messages[chatId],
-            {
-              id: nanoid(),
-              author: 'Душнила',
-              value: `Привет ${
-                messages[chatId][messages[chatId].length - 1].author
-              }, ты скучный!`,
-              now: new Date().toLocaleTimeString().slice(0, -3),
-            },
-          ],
-        });
-      }, 1000);
+  const chats = useSelector(selectChats);
+  const chatList = useSelector(selectChatList);
 
-      return () => {
-        clearTimeout(timeout);
-      };
-    }
-  }, [chatId, messages, setMessages]);
+  // useEffect(() => {
+  //   if (
+  //     chatId &&
+  //     chats[chatId]?.length > 0 &&
+  //     chats[chatId][chats[chatId].length - 1].author !== 'Душнила'
+  //   ) {
+  //     const timeout = setTimeout(() => {
+  //       setMessages({
+  //         ...messages,
+  //         [chatId]: [
+  //           ...messages[chatId],
+  //           {
+  //             id: nanoid(),
+  //             author: 'Душнила',
+  //             value: `Привет ${
+  //               messages[chatId][messages[chatId].length - 1].author
+  //             }, ты скучный!`,
+  //             now: new Date().toLocaleTimeString().slice(0, -3),
+  //           },
+  //         ],
+  //       });
+  //     }, 1000);
 
-  const addMessage = useCallback(
-    (autorValue: string, messageValue: string) => {
-      if (chatId) {
-        setMessages((prevMessage) => ({
-          ...prevMessage,
-          [chatId]: [
-            ...prevMessage[chatId],
-            {
-              id: nanoid(),
-              author: autorValue,
-              value: messageValue,
-              now: new Date().toLocaleTimeString().slice(0, -3),
-            },
-          ],
-        }));
-      }
-    },
-    [chatId, setMessages]
-  );
+  //     return () => {
+  //       clearTimeout(timeout);
+  //     };
+  //   }
+  // }, [chatId, messages, setMessages]);
 
   if (!chatList.find((chat) => chat.name === chatId)) {
     return <Navigate replace to="/chats" />;
@@ -78,14 +48,10 @@ export const Chats: FC<ChatsProps> = ({
 
   return (
     <div className={style.chat__wrp}>
-      <ChatList
-        chatList={chatList}
-        onAddChat={onAddChat}
-        onDeleteChat={onDeleteChat}
-      />
+      <ChatList />
       <div className={style.chat__board}>
-        <MessageList messages={chatId ? messages[chatId] : []} />
-        <MessageForm addMessage={addMessage} />
+        <MessageList messages={chatId ? chats[chatId] : []} />
+        <MessageForm />
       </div>
     </div>
   );

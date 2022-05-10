@@ -1,16 +1,18 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(120deg, #17bebb, #f0a6ca);
+  overflow: hidden;
+
 }
 
 body {
+  background: linear-gradient(120deg, #17bebb, #f0a6ca);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  height: 96vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-y: hidden;
 }
 
 code {

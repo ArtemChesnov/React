@@ -1,7 +1,7 @@
 import React, { FC, useState, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addMessageWithReply } from 'src/store/chats/actions';
+import { addMessageWithReply } from '../../../store/chats/actions';
 import { ChatsState } from 'src/store/chats/reducer';
 import { AddMessage } from 'src/store/chats/types';
 import { ThunkDispatch } from 'redux-thunk';

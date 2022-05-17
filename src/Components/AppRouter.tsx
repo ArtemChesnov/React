@@ -9,10 +9,19 @@ import { Profile } from 'src/pages/Profile';
 // import { ChatList } from './CompFunc/ChatList';
 import { Header } from './CompFunc/Header';
 
+// const ChatList = React.lazy(() =>
+//   import('src/Components/CompFunc/ChatList').then((module) => ({
+//     default: module.ChatList,
+//   })),
+// );
+
 const ChatList = React.lazy(() =>
-  import('src/Components/CompFunc/ChatList').then((module) => ({
-    default: module.ChatList,
-  }))
+  Promise.all([
+    import('src/Components/CompFunc/ChatList').then(({ ChatList }) => ({
+      default: ChatList,
+    })),
+    new Promise((resolve) => setTimeout(resolve, 1000)),
+  ]).then(([moduleExports]) => moduleExports)
 );
 
 const Chats = React.lazy(() =>

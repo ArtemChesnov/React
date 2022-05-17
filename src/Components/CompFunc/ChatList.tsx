@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import style from './ChatList.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { addChat, deleteChat } from '../../store/chats/actions';
+import { addChat, deleteChat } from '../../store/chats/slice';
 import { selectChatList } from '../../store/chats/selectors';
 
 export const ChatList: FC = () => {
@@ -16,7 +16,7 @@ export const ChatList: FC = () => {
     e.preventDefault();
 
     if (name) {
-      dispatch(addChat(name));
+      dispatch(addChat({ name }));
       setName('');
     }
   };
@@ -38,7 +38,7 @@ export const ChatList: FC = () => {
               </NavLink>
               <button
                 className={style.btn}
-                onClick={() => dispatch(deleteChat(chat.name))}
+                onClick={() => dispatch(deleteChat({ chatId: chat.name }))}
               >
                 x
               </button>

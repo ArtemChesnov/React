@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import { Message, MessageState } from './types';
 
@@ -42,6 +42,36 @@ const chatsSlice = createSlice({
     },
   },
 });
+
+let timeout: NodeJS.Timeout;
+
+export const addMessageWithReply = createAsyncThunk(
+  'chats/addMessageWithReply',
+  async (
+    { chatId, message }: { chatId: string; message: Message },
+    { dispatch }
+  ) => {
+    dispatch(addMessage({ chatId, message }));
+    if (message.author !== 'Душнила') {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+
+      timeout = setTimeout(() => {
+        dispatch(
+          addMessage({
+            chatId,
+            message: {
+              value: `Привет ${message.author}, ты скучный!`,
+              author: 'Душнила',
+              now: new Date().toLocaleTimeString().slice(0, -3),
+            },
+          })
+        );
+      }, 1000);
+    }
+  }
+);
 
 export const { addChat, deleteChat, addMessage } = chatsSlice.actions;
 export const chatsReducer = chatsSlice.reducer;

@@ -1,7 +1,7 @@
 import React, { FC, useState, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addMessage } from '../../../store/chats/slice';
+import { addMessageWithReply } from '../../../store/chats/slice';
 import { ChatsState } from 'src/store/chats/reducer';
 import { AddMessage } from 'src/store/chats/types';
 import { ThunkDispatch } from 'redux-thunk';
@@ -16,15 +16,15 @@ export const MessageForm: FC = memo(() => {
   const [authorValue, setAuthorValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
 
-  const dispatch = useDispatch();
-  // useDispatch<ThunkDispatch<ChatsState, void, ReturnType<AddMessage>>>();
+  const dispatch =
+    useDispatch<ThunkDispatch<ChatsState, void, ReturnType<AddMessage>>>();
   const { chatId } = useParams();
 
   const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (chatId && messageValue) {
       dispatch(
-        addMessage({
+        addMessageWithReply({
           chatId,
           message: {
             author: authorValue,
@@ -32,11 +32,6 @@ export const MessageForm: FC = memo(() => {
             now: new Date().toLocaleTimeString().slice(0, -3),
           },
         })
-        // addMessageWithReply(chatId, {
-        //   value: messageValue,
-        //   author: authorValue,
-        //   now: new Date().toLocaleTimeString().slice(0, -3),
-        // }),
       );
     }
 

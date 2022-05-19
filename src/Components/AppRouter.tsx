@@ -1,19 +1,12 @@
 import React, { FC, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AboutWithConnect } from 'src/pages/About';
-// import { Chats } from 'src/pages/Chats';
+import { Articles } from 'src/pages/Articles';
 import { Error } from 'src/pages/Error';
 import { Home } from 'src/pages/Home';
 import { Loader } from 'src/pages/Loader';
 import { Profile } from 'src/pages/Profile';
-// import { ChatList } from './CompFunc/ChatList';
 import { Header } from './CompFunc/Header';
-
-// const ChatList = React.lazy(() =>
-//   import('src/Components/CompFunc/ChatList').then((module) => ({
-//     default: module.ChatList,
-//   })),
-// );
 
 const ChatList = React.lazy(() =>
   Promise.all([
@@ -44,6 +37,7 @@ export const AppRouter: FC = () => {
               <Route path=":chatId" element={<Chats />} />
             </Route>
             <Route path="about" element={<AboutWithConnect />} />
+            <Route path="articles" element={<Articles />} />
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>

@@ -23,6 +23,11 @@ const navigate = [
     to: '/about',
     name: 'About',
   },
+  {
+    id: 5,
+    to: '/articles',
+    name: 'Articles',
+  },
 ];
 
 export const Header: FC = () => (

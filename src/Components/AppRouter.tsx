@@ -6,7 +6,11 @@ import { Error } from 'src/pages/Error';
 import { Home } from 'src/pages/Home';
 import { Loader } from 'src/pages/Loader';
 import { Profile } from 'src/pages/Profile';
+import { SignIn } from 'src/pages/SignIn';
+import { SignUp } from 'src/pages/SignUp';
 import { Header } from './CompFunc/Header';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
 const ChatList = React.lazy(() =>
   Promise.all([
@@ -32,12 +36,17 @@ export const AppRouter: FC = () => {
             <Route index element={<Home />} />
             <Route path="profile" element={<Profile />} />
 
-            <Route path="chats">
+            <Route path="chats" element={<PrivateRoute />}>
               <Route index element={<ChatList />} />
               <Route path=":chatId" element={<Chats />} />
             </Route>
             <Route path="about" element={<AboutWithConnect />} />
             <Route path="articles" element={<Articles />} />
+            <Route
+              path="signin"
+              element={<PublicRoute component={<SignIn />} />}
+            />
+            <Route path="signup" element={<SignUp />} />
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>

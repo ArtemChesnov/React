@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import { Message, MessageState } from './types';
 
-export interface ChatState {
+export interface ChatsState {
   [key: string]: MessageState[];
 }
 
-const initialState: ChatState = {
+const initialState: ChatsState = {
   gb: [
     {
       id: '1',

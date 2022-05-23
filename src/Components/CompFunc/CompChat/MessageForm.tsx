@@ -30,7 +30,6 @@ export const MessageForm: FC = memo(() => {
           now: new Date().toLocaleTimeString().slice(0, -3),
         })
       );
-      console.log();
     }
 
     setAuthorValue('');

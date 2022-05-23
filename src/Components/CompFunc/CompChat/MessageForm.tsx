@@ -1,8 +1,8 @@
 import React, { FC, useState, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addMessageWithReply } from '../../../store/chats/actions';
-import { ChatsState } from 'src/store/chats/reducer';
+import { addMessageWithReply } from '../../../store/chats/slice';
+import { ChatsState } from 'src/store/chats/slice';
 import { AddMessage } from 'src/store/chats/types';
 import { ThunkDispatch } from 'redux-thunk';
 
@@ -24,10 +24,13 @@ export const MessageForm: FC = memo(() => {
     event.preventDefault();
     if (chatId && messageValue) {
       dispatch(
-        addMessageWithReply(chatId, {
-          value: messageValue,
-          author: authorValue,
-          now: new Date().toLocaleTimeString().slice(0, -3),
+        addMessageWithReply({
+          chatId,
+          message: {
+            author: authorValue,
+            value: messageValue,
+            now: new Date().toLocaleTimeString().slice(0, -3),
+          },
         })
       );
     }

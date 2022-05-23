@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Outlet, NavLink, Link } from 'react-router-dom';
+import { selectAuth } from 'src/store/profile/selectors';
+import { changeAuth } from 'src/store/profile/slice';
 import style from './Header.module.scss';
 
 const navigate = [
@@ -23,28 +26,42 @@ const navigate = [
     to: '/about',
     name: 'About',
   },
+  {
+    id: 5,
+    to: '/articles',
+    name: 'Articles',
+  },
 ];
 
-export const Header: FC = () => (
-  <>
-    <header>
-      <ul className={style.links}>
-        {navigate.map((link) => (
-          <li key={link.id}>
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? style.active : style.none
-              }
-              to={link.to}
-            >
-              {link.name}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </header>
-    <main>
-      <Outlet />
-    </main>
-  </>
-);
+export const Header: FC = () => {
+  const dispatch = useDispatch();
+  const auth = useSelector(selectAuth);
+  return (
+    <>
+      <header>
+        <ul className={style.links}>
+          {navigate.map((link) => (
+            <li key={link.id}>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? style.active : style.none
+                }
+                to={link.to}
+              >
+                {link.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </header>
+      {auth ? (
+        <button onClick={() => dispatch(changeAuth(false))}>logout</button>
+      ) : (
+        <Link to="/signin">SignIn</Link>
+      )}
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
+};

@@ -1,4 +1,5 @@
-import React, { FC, Suspense } from 'react';
+import React, { FC, Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AboutWithConnect } from 'src/pages/About';
 import { Articles } from 'src/pages/Articles';
@@ -8,6 +9,8 @@ import { Loader } from 'src/pages/Loader';
 import { Profile } from 'src/pages/Profile';
 import { SignIn } from 'src/pages/SignIn';
 import { SignUp } from 'src/pages/SignUp';
+import { auth } from 'src/services/firebase';
+import { changeAuth } from 'src/store/profile/slice';
 import { Header } from './CompFunc/Header';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
@@ -28,6 +31,19 @@ const Chats = React.lazy(() =>
 );
 
 export const AppRouter: FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      console.log('user', user);
+      if (user) {
+        dispatch(changeAuth(true));
+      } else {
+        dispatch(changeAuth(false));
+      }
+    });
+  }, []);
+
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader />}>
@@ -35,7 +51,6 @@ export const AppRouter: FC = () => {
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
             <Route path="profile" element={<Profile />} />
-
             <Route path="chats" element={<PrivateRoute />}>
               <Route index element={<ChatList />} />
               <Route path=":chatId" element={<Chats />} />

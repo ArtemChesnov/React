@@ -1,14 +1,14 @@
 import React, { FC, useState, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addMessageWithReply } from '../../../store/chats/slice';
-import { ChatsState } from 'src/store/chats/slice';
-import { AddMessage } from 'src/store/chats/types';
 import { ThunkDispatch } from 'redux-thunk';
 
 import { AuthorInput } from './AuthorInput/AuthorInput';
 import { MessageButton } from './MessageButton/MessageButton';
 import { MessageInput } from './MessageInput/MessageInput';
+import { addMessageWithReply } from 'src/store/chats/slice';
+import { ChatsState } from 'src/store/chats/slice';
+import { AddMessage } from 'src/store/chats/types';
 
 import style from './MessageForm.module.scss';
 

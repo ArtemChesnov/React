@@ -1,11 +1,20 @@
-import React, { FC, useState } from 'react';
+import { onValue } from 'firebase/database';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { userRef } from 'src/services/firebase';
 import { selectName, selectVisible } from 'src/store/profile/selectors';
 import { changeName, toggleProfile } from 'src/store/profile/slice';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
+
+  useEffect(() => {
+    onValue(userRef, (snapshot) => {
+      const user = snapshot.val();
+      console.log('user', user);
+    });
+  }, []);
 
   const visible = useSelector(selectVisible);
   const name = useSelector(selectName);
